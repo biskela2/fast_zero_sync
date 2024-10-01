@@ -1,6 +1,4 @@
-from turtle import config_dict
-
-from pydantic import BaseModel, EmailStr, ConfigDict
+from pydantic import BaseModel, EmailStr
 
 
 class UserSchema(BaseModel):
@@ -8,12 +6,19 @@ class UserSchema(BaseModel):
     email: EmailStr
     password: str
 
+
 class UserPublic(BaseModel):
     id: int
     username: str
     email: EmailStr
-    model_config = config_dict(from_attributes=True)
+
+    class Config:
+        orm_mode = True
 
 
 class UserList(BaseModel):
     users: list[UserPublic]
+
+class Token(BaseModel):
+    access_token: str
+    token_type: str

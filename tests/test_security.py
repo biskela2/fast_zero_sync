@@ -1,17 +1,19 @@
-from jwt import decode
 from http import HTTPStatus
 
-from fast_zero.security import create_access_token, SECRET_KEY, ALGORITHM
+from jwt import decode
+
+from fast_zero.security import create_access_token, settings
 
 
 def test_jwt():
     data = {'sub': 'test'}
     token = create_access_token(data)
 
-    result = decode(token, SECRET_KEY, algorithms=[ALGORITHM])
+    result = decode(token, settings.SECRET_KEY, algorithms=[settings.ALGORITHM])
 
-    assert result ['sub'] == data['sub']
-    assert result ['exp']
+    assert result['sub'] == data['sub']
+    assert result['exp']
+
 
 def test_jwt_invalid_token(client):
     response = client.delete(

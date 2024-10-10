@@ -1,4 +1,5 @@
 from http import HTTPStatus
+from typing import Annotated
 
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy import select
@@ -8,7 +9,6 @@ from fast_zero.database import get_session
 from fast_zero.models import User
 from fast_zero.schemas import UserList, UserPublic, UserSchema
 from fast_zero.security import get_current_user, get_password_hash
-from typing import Annotated
 
 router = APIRouter(
     prefix='',

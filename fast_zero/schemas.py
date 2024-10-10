@@ -1,4 +1,8 @@
-from pydantic import BaseModel, EmailStr
+from pydantic import BaseModel, ConfigDict, EmailStr
+
+
+class Message(BaseModel):
+    message: str
 
 
 class UserSchema(BaseModel):
@@ -11,9 +15,7 @@ class UserPublic(BaseModel):
     id: int
     username: str
     email: EmailStr
-
-    class Config:
-        orm_mode = True
+    model_config = ConfigDict(from_attributes=True)
 
 
 class UserList(BaseModel):
@@ -23,3 +25,12 @@ class UserList(BaseModel):
 class Token(BaseModel):
     access_token: str
     token_type: str
+
+
+class TokenData(BaseModel):
+    username: str | None = None
+
+
+class FilterPage(BaseModel):
+    offset: int = 0
+    limit: int = 100

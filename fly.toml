@@ -1,9 +1,9 @@
-# fly.toml app configuration file generated for fast-zero-blue-shadow-8225 on 2024-11-08T12:49:14-03:00
+# fly.toml app configuration file generated for fast-zero-solitary-flower-52 on 2025-01-08T16:29:23-03:00
 #
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
 
-app = 'fast-zero-blue-shadow-8225'
+app = 'fast-zero-solitary-flower-52'
 primary_region = 'gru'
 
 [build]
